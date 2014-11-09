@@ -44,9 +44,6 @@ public class SubmitRe extends javax.swing.JFrame {
         fileChooser = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtResult = new javax.swing.JTextArea();
-        lblRes = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtOutput = new javax.swing.JTextArea();
         lblOutput = new javax.swing.JLabel();
@@ -75,13 +72,6 @@ public class SubmitRe extends javax.swing.JFrame {
             }
         });
 
-        txtResult.setColumns(20);
-        txtResult.setRows(5);
-        txtResult.setEditable(false);
-        jScrollPane3.setViewportView(txtResult);
-
-        lblRes.setText("Result:");
-
         txtOutput.setColumns(20);
         txtOutput.setRows(5);
         txtOutput.setEditable(false);
@@ -109,21 +99,20 @@ public class SubmitRe extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnClear)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblRes)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lblInput)
-                                    .addGap(226, 226, 226)
-                                    .addComponent(lblOutput))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(22, 22, 22)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblInput)
+                                .addGap(226, 226, 226)
+                                .addComponent(lblOutput))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnClear)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -139,13 +128,9 @@ public class SubmitRe extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblRes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClear)
-                .addGap(97, 97, 97))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jFileChooseRE.setText("File");
@@ -183,14 +168,16 @@ public class SubmitRe extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
          private void clear(){
-         txtResult.setText("");
+//         txtResult.setText("");
          txtOutput.setText("");
          txtInput.setText("");
          }
@@ -206,17 +193,17 @@ public class SubmitRe extends javax.swing.JFrame {
           
                     String sampleoutput=new epsnfa().Start(file.getAbsolutePath());
                     txtOutput.append(sampleoutput);
-                    System.out.println("**********************\nTest on sample input (sampleRE.in)......");
-                        if (!sampleoutput.equals("101\n0\n1\n0\n101\n"))
-                        {
-                                txtResult.append("Your output on sampleRE.in is not correct\nYour output is: "+sampleoutput);
-                                //return;    	
-                        }
-                        else 
-                        {
-                            txtResult.append("Your output is correct for sample input.\n**********************\n\n");
-                            
-                       }
+//                    System.out.println("**********************\nTest on sample input (sampleRE.in)......");
+//                        if (!sampleoutput.equals("101\n0\n1\n0\n101\n"))
+//                        {
+//                                txtResult.append("Your output on sampleRE.in is not correct\nYour output is: "+sampleoutput);
+//                                //return;    	
+//                        }
+//                        else 
+//                        {
+//                            txtResult.append("Your output is correct for sample input.\n**********************\n\n");
+//                            
+//                       }
 
                     } catch (IOException ex) 
                     {
@@ -288,13 +275,10 @@ public class SubmitRe extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblInput;
     private javax.swing.JLabel lblOutput;
-    private javax.swing.JLabel lblRes;
     private javax.swing.JTextArea txtInput;
     private javax.swing.JTextArea txtOutput;
-    private javax.swing.JTextArea txtResult;
     // End of variables declaration//GEN-END:variables
     
 }

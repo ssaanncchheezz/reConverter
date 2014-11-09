@@ -252,7 +252,7 @@ public class epsnfa{
 			//Read File Line By Line
 			while ((re = br.readLine()) != null) {
 				
-				System.out.println ("Processing "+re+"...");				
+				result+="Processing "+re+"...\n";					
 				calc_next(re);
 				state=0;
 				int[] nfa=parse(re,0,re.length()-1);
@@ -281,7 +281,9 @@ public class epsnfa{
 			in.close();
 		}catch (Exception e){//Catch exception if any
 			result=result+"error\n";
-                        System.err.println("Error: " + e.getLocalizedMessage());
+                     //   System.err.println("Error: " + e.getLocalizedMessage());
+                     //   System.err.println("Error: " + e.getMessage());
+                        e.printStackTrace();
 		}
 		
 		return result;
@@ -289,7 +291,8 @@ public class epsnfa{
 	
 	public static void main(String args[])
   {
-		String result = new epsnfa().Start("C:\\Users\\Lain\\Documents\\Automatas\\CódigoJava\\sampleRE.in");
+                //File file = new File();
+		String result = new epsnfa().Start("sampleRE.in");
 		System.out.println(result);
 	}
 	
